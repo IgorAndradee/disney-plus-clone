@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
+import NewDisney from "./NewDisney";
+import Originals from "./Originals";
 import Recommends from "./Recommends";
+import Trending from "./Trending";
 import Viwers from "./Viwers";
 
 const Home = (props) => {
@@ -9,6 +12,9 @@ const Home = (props) => {
       <ImgSlider />
       <Viwers />
       <Recommends />
+      <NewDisney />
+      <Originals />
+      <Trending />
     </Container>
   );
 };
