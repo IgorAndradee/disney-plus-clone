@@ -1,51 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectRecommend } from "../features/movie/movieSlice";
 
 const Recommends = (props) => {
+  const movies = useSelector(selectRecommend);
+
   return (
     <Container>
-      <h4>Recommended for you</h4>
+      <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <Link to={`/`}>
-            <img
-              src={
-                "https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2021-07/210708-disney-encanto-jm-1805-631274.jpg"
-              }
-              alt={""}
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to={`/`}>
-            <img
-              src={
-                "https://tvline.com/wp-content/uploads/2020/05/wonderful-world-of-disney-moana-.jpg?w=620&h=420&crop=1"
-              }
-              alt={""}
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to={`/`}>
-            <img
-              src={
-                "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hbz-best-disney-movies-zootopia-everett-1587424586.jpg"
-              }
-              alt={""}
-            />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to={`/`}>
-            <img
-              src={
-                "https://media.timeout.com/images/105671365/750/422/image.jpg"
-              }
-              alt={""}
-            />
-          </Link>
-        </Wrap>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/` + movie.id}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
+            </Wrap>
+          ))}
       </Content>
     </Container>
   );
@@ -60,6 +33,7 @@ const Content = styled.div`
   grid-gap: 25px;
   gap: 25px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -75,6 +49,7 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
+
   img {
     inset: 0px;
     display: block;
@@ -87,6 +62,7 @@ const Wrap = styled.div`
     z-index: 1;
     top: 0;
   }
+
   &:hover {
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
       rgb(0 0 0 / 72%) 0px 30px 22px -10px;
