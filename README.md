@@ -1,7 +1,7 @@
 # Disney+ Clone w/ ReactJS
 
 This is the ReactJS Disney Plus Clone from Clever Programmer class.\
-This project was developed using ReactJS, Redux, Firebase and Styled Components.\
+This project was developed using ReactJS, Redux, Firebase and Styled Components.
 
 In this project you can find:
 
